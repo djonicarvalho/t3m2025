@@ -29,6 +29,14 @@ app.get('/', (req, res) => {
   });
 });
 
+// Configuração CORS para permitir requisições do frontend
+app.use(cors({
+  origin: '*', // Em produção, substitua por seus domínios específicos
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
+  credentials: true
+}));
+
 // Rotas da API
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/users', require('./routes/users'));
